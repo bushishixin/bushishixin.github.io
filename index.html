@@ -1,171 +1,188 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚠️ 安全警报 ⚠️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>我的GitHub Pages主页</title>
     <style>
-        body {
-            background: #0a0f1e;
-            font-family: 'Courier New', monospace;
-            color: #0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
-            overflow: hidden;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .terminal {
-            background: #000;
-            border: 2px solid #0f0;
-            border-radius: 8px;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-            animation: flicker 0.15s infinite alternate;
-        }
-        @keyframes flicker {
-            0% { opacity: 1; }
-            100% { opacity: 0.98; }
-        }
-        h1 {
-            color: #f00;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px red;
-            border-bottom: 1px solid #0f0;
-            padding-bottom: 10px;
-        }
-        .info-line {
-            margin: 15px 0;
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f5f7fc 0%, #e9eef4 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
         }
-        .label {
-            color: #fff;
-            font-weight: bold;
-        }
-        .value {
-            color: #0f0;
-        }
-        .progress-bar {
-            border: 1px solid #0f0;
-            height: 20px;
-            margin: 20px 0;
-            background: #111;
-            border-radius: 4px;
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.25), 0 2px 5px rgba(0,0,0,0.05);
             overflow: hidden;
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.5);
         }
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                #f00,
-                #f00 10px,
-                #a00 10px,
-                #a00 20px
-            );
-            animation: loading 8s linear infinite;
+
+        .card:hover {
+            transform: scale(1.01);
         }
-        @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 67%; }
-            100% { width: 67%; }
-        }
-        .blink {
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        .punchline {
-            color: #ff0;
+
+        .header {
+            background: #0a192f;
+            color: white;
+            padding: 2rem 2rem 1.5rem;
             text-align: center;
-            margin-top: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-shadow: 0 0 5px yellow;
-            border-top: 1px dashed #0f0;
-            padding-top: 20px;
         }
-        .small-note {
-            color: #888;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 12px;
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
         }
-        .fake-btn {
-            background: #222;
-            color: #0f0;
-            border: 1px solid #0f0;
-            padding: 8px 16px;
-            cursor: not-allowed;
+
+        .header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .intro {
+            background: #eef2ff;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            margin-bottom: 2rem;
+            color: #1e293b;
+            font-size: 0.95rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 0.9rem 1.2rem;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .page-link:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+            transform: translateX(4px);
+            box-shadow: 0 8px 20px -8px rgba(59,130,246,0.2);
+        }
+
+        .page-name {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.05rem;
+        }
+
+        .page-name span:first-child {
+            font-size: 1.4rem;
+        }
+
+        .arrow {
+            color: #3b82f6;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .page-link:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .badge {
+            background: #e6f0ff;
+            color: #1e40af;
+            border-radius: 40px;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .footer {
+            border-top: 1px solid #e2edff;
+            padding: 1.2rem 2rem;
             text-align: center;
-            width: fit-content;
-            margin: 20px auto 0;
-            border-radius: 4px;
-            opacity: 0.7;
+            font-size: 0.8rem;
+            color: #5b6e8c;
+            background: #fafcff;
+        }
+
+        @media (max-width: 500px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 1.5rem; }
+            .page-link { padding: 0.7rem 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="terminal">
-        <h1>🚨 警告：检测到信息泄露 🚨</h1>
-        
-        <div class="info-line">
-            <span class="label">IP 地址：</span>
-            <span class="value" id="ip-display">正在定位...</span>
+<div class="card">
+    <div class="header">
+        <h1>📁 我的文件库</h1>
+        <p>GitHub Pages · 个人站点</p>
+    </div>
+    <div class="content">
+        <div class="intro">
+            ✨ 欢迎访问！这里列出了当前仓库中可查看的页面，点击即可访问。
         </div>
-        <div class="info-line">
-            <span class="label">物理位置：</span>
-            <span class="value" id="location-display">银河系·猎户臂·地球村·你心里</span>
+        <div class="page-list">
+            <!-- 在这里添加你的页面，一行一个，格式如下 -->
+            <a href="1.html" class="page-link">
+                <div class="page-name">
+                    <span>📄</span>
+                    <span>1.html</span>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+
+            <!-- 以后新增页面，复制上面一行，修改 href 和显示的文字即可 -->
+            <!-- 
+            <a href="2.html" class="page-link">
+                <div class="page-name">
+                    <span>🌟</span>
+                    <span>2.html</span>
+                </div>
+                <div class="arrow">→</div>
+            </a>
+            -->
         </div>
-        <div class="info-line">
-            <span class="label">泄露数据类型：</span>
-            <span class="value">浏览记录 / 相册 / 深夜emo日记</span>
-        </div>
-        
-        <div style="margin-top: 20px;">
-            <span class="label">正在加密你的文件...</span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
-        
-        <div class="info-line">
-            <span class="label">状态：</span>
-            <span class="value blink">数据上传中 (67%) —— 卡住了</span>
-        </div>
-        
-        <div class="fake-btn">
-            [ 立即阻止 ] (按钮已坏)
-        </div>
-        
-        <!-- 戏精部分结束，下面是真相 -->
-        <div class="punchline">
-            😂 别怕，逗你玩的！ 😂<br>
-            <span style="color: #fff; font-size: 14px;">—— 来自你那个学了点前端就皮痒的朋友</span>
-        </div>
-        <div class="small-note">
-            * 此页面不会收集任何信息，纯属娱乐。如果被吓到，我请你喝奶茶赔罪。
+        <div style="margin-top: 1.5rem; font-size: 0.75rem; color: #6c86a3; text-align: center;">
+            💡 提示：直接访问根域名会看到本页，访问具体文件需加完整文件名。
         </div>
     </div>
-
-    <script>
-        // 纯前端小把戏：显示一个假 IP 地址（不会真正获取）
-        // 只是为了让页面看起来更真，实际上是随机拼接的
-        const fakeIP = `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
-        document.getElementById('ip-display').textContent = fakeIP;
-        
-        // 还可以加点假的控制台输出戏份
-        console.log("%c警告：你的浏览器正在被监控！", "color: red; font-size: 20px; font-weight: bold;");
-        console.log("%c……才怪 😜 就是个玩笑，你朋友写来逗你的。", "color: green; font-size: 14px;");
-    </script>
+    <div class="footer">
+        <span>bushishixin · 由 GitHub Pages 驱动</span>
+    </div>
+</div>
 </body>
 </html>
